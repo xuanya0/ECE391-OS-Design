@@ -1,0 +1,24 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+handlers.o: handlers.S
+sys_call.o: sys_call.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+filesystem.o: filesystem.c filesystem.h lib.h types.h syscall.h \
+  x86_desc.h
+i8259.o: i8259.c i8259.h types.h lib.h
+inthandler.o: inthandler.c inthandler.h lib.h types.h i8259.h schedule.h \
+  syscall.h x86_desc.h terminal.h paging.h user.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  inthandler.h terminal.h paging.h syscall.h user.h rtc.h filesystem.h \
+  schedule.h
+lib.o: lib.c lib.h types.h terminal.h paging.h syscall.h x86_desc.h \
+  user.h
+paging.o: paging.c paging.h types.h lib.h
+rtc.o: rtc.c rtc.h lib.h types.h i8259.h syscall.h x86_desc.h
+schedule.o: schedule.c schedule.h syscall.h lib.h types.h x86_desc.h \
+  paging.h i8259.h
+syscall.o: syscall.c syscall.h lib.h types.h x86_desc.h terminal.h \
+  paging.h user.h filesystem.h rtc.h i8259.h schedule.h
+terminal.o: terminal.c terminal.h lib.h types.h paging.h syscall.h \
+  x86_desc.h user.h i8259.h schedule.h
+user.o: user.c user.h lib.h types.h terminal.h paging.h syscall.h \
+  x86_desc.h i8259.h
